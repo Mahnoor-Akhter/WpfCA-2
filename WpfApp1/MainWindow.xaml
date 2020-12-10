@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="lbxName" HorizontalAlignment="Left" Height="334" Margin="24,28,0,0" VerticalAlignment="Top" Width="217"/>
+        <TextBox x:Name="tbxfirstname" HorizontalAlignment="Left" Height="23" Margin="306,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="First Name " GotFocus="tbxfirstname_GotFocus"/>
+        <TextBox x:Name="tbxlastname" HorizontalAlignment="Left" Height="23" Margin="306,88,0,0" TextWrapping="Wrap" Text="Surname" VerticalAlignment="Top" Width="120" GotFocus="tbxlastname_GotFocus" />
+        <Button x:Name="btnAddname" Content="Add" HorizontalAlignment="Left" Margin="495,150,0,0" VerticalAlignment="Top" Width="75" Click="btxaddname_Click"/>
+        <RadioButton x:Name="rbfulltime" Content="FT" HorizontalAlignment="Left" Margin="273,150,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbparttime" Content="PT" HorizontalAlignment="Left" Margin="410,150,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
