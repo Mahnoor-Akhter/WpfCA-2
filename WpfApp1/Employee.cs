@@ -6,28 +6,33 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-	public class Employees
+	public abstract  class  Employee
 	{
+		
 		public string FirstName { get; set; }
 
 
 		public string LastName { get; set; }
 
-		public string Time { get; set; }
-		
+		public abstract decimal CalculateMonthlyPay();
 
 
-		public Employees(string firstname,string lastname,string time )
+
+
+		public Employee(string firstname, string lastname)
 		{
 			FirstName = firstname;
 			LastName = lastname;
-			Time = time;
 
 
 		}
+
+
+
+
 		public override string ToString()
 		{
-			return string.Format($"{LastName},{FirstName},{Time}");
+			return string.Format($"{LastName},{FirstName}");
 		}
 
 
@@ -37,4 +42,6 @@ namespace WpfApp1
 
 
 	}
+
+	
 }

@@ -21,8 +21,8 @@ namespace WpfApp1
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		ObservableCollection<Employees> Employees = new ObservableCollection<Employees>();
-
+		ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
+		decimal salary;
 
 		public MainWindow()
 		{
@@ -32,18 +32,18 @@ namespace WpfApp1
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 
-			//string [] names= {"jane","joe","jones","jess"};
-			Employees e1 = new Employees("Jane", "Jones", "Part Time");
-			Employees e2 = new Employees("Joe", "Murphy", "Full Time");
-			Employees e3 = new Employees("John", "Smith", "Part Time");
-			Employees e4 = new Employees("Jess", "Walsh", "Full Time");
+		     //string [] names= {"jane","joe","jones","jess"};
+			Employee e1 = new PartTimeEmployees("Jane", "Jones", Convert.ToDecimal(9.50), 10);
+			Employee e2 = new  FullTimeEmployees("Joe", "Murphy", Convert.ToDecimal(10.50), 10);
+			Employee e3 = new FullTimeEmployees("John", "Smith", Convert.ToDecimal(11.50), 10);
+			Employee e4 = new PartTimeEmployees("Jess", "Walsh", Convert.ToDecimal(12.50), 10);
 
-			Employees.Add(e1);
-			Employees.Add(e2);
-			Employees.Add(e3);
-			Employees.Add(e4);
+			employees.Add(e1);
+			employees.Add(e2);
+			employees.Add(e3);
+			employees.Add(e4);
 
-			lbxName.ItemsSource = Employees;
+			lbxName.ItemsSource = employees;
 
 
 
@@ -59,16 +59,48 @@ namespace WpfApp1
 			//read details from screen
 			string firstName = tbxfirstname.Text;
 			string lastName = tbxlastname.Text;
-			string time = rbfulltime.Name;
-
+			decimal hourlyrate = Convert.ToDecimal (tbxhrinput.Text);
+			double hoursworked = Convert.ToDouble(tbxHWinput1.Text);
 			//create employees object
-			Employees employees = new Employees(firstName, lastName, time);
+
+
+
+			//add to  obervable collection
+
+			//check which radio button is selected 
+
+
+			//if radiobutton full time then create full time employee
+			if (rbfulltime.IsChecked == true)
+			{
+				//create a full time employee
+				Employee e1 = new FullTimeEmployees(firstName, lastName, hourlyrate, hoursworked);
+
+
+			}
+			//else if pt rb then create part time employee
+			else if (rbparttime.IsChecked == true)
+		   {
+				Employee e1 = new PartTimeEmployees(firstName, lastName, hourlyrate, hoursworked);
+			    salary = e1.CalculateMonthlyPay();
+				employees.Add(e1);
+			}
+
+
+
+
+
+
+
+			
 			//add to observalbe collection
-			Employees.Add(employees);
+			
 
 
 
 			//refresh display manually
+
+
 			//lbxNames.ItemsSource = null;
 			//lbxNames.ItemsSource = names;
 
@@ -80,5 +112,7 @@ namespace WpfApp1
 		{
 			tbxlastname.Clear();
 		}
+
+		
 	}
 }
