@@ -29,10 +29,10 @@ namespace WpfApp1
 
 
 
-
+		//Output display in listbox
 		public override string ToString()
 		{
-			return string.Format($"{LastName},{FirstName}");
+			return string.Format($"{LastName.ToUpper()},{FirstName}");
 		}
 
 

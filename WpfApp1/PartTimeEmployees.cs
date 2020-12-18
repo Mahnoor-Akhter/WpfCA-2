@@ -18,12 +18,12 @@ namespace WpfApp1
 		public  decimal  HourlyRate { get;set; }
 
 		public  double HoursWorked { get; set; }
-
+		//override Method 
 		public override decimal CalculateMonthlyPay()
 		{
-			return Convert.ToDecimal(HourlyRate )*Convert.ToDecimal( HoursWorked);
+			return Convert.ToDecimal(HourlyRate )*Convert.ToDecimal( HoursWorked);//employee hour rate and work
 		}
-
+		//Type of Employee seleted 
 		public override string ToString()
 		{
 			return base.ToString() + "-Part Time";
